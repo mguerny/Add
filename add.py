@@ -2,6 +2,6 @@ class Add:
 
     @staticmethod
     def add(numbers):
-        return True
+        return 0
 
 
