@@ -31,8 +31,10 @@ class TestFizzBuzz(unittest.TestCase):
         self.assertEqual(Add.add(r"//?\n1?2?3?1"), '7.0')
 
     def test_no_negative_number(self):
-        Add.add(r"//-\n1--2-3-9--1")
         self.assertEqual(Add.add(r"//-\n1--2-3-9--1"), "Negative not allowed : -2, -1")
+
+    def test_cumulative_errors(self):
+        self.assertEqual(Add.add("-1,,1"), r"Negative not allowed : -1\nError : 2 consecutive separators found")
 
 
 if __name__ == '__main__':
