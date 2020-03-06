@@ -1,5 +1,6 @@
 class Add:
 
+    @staticmethod
     def isfloat(value):
         try:
             float(value)
@@ -20,6 +21,22 @@ class Add:
                 len_to_remove = 2 + len(separator) + 2
                 numbers = numbers[len_to_remove:]
 
+        negative = '-'
+        if separator == '-':
+            negative = '--'
+
+        if negative in numbers:
+            errorMessage = "Negative not allowed : "
+            errorList = numbers.split(negative)
+            for i in range(1, len(errorList)):
+                error = errorList[i]
+                foundNumber = error.split(separator)[0]
+                errorMessage = errorMessage + "-" + foundNumber + ", "
+            errorMessage = errorMessage[:-2]
+            return errorMessage
+
+
+
         numbersum = 0
         if numbers == '':
             return '0'
@@ -31,17 +48,13 @@ class Add:
             for item2 in smalllist:
                 list_by_separator_and_newline.append(item2)
 
-        for item in list_by_separator_and_newline:
-            if item == '':
-                return 'Number expected but EOF found'
+        if list_by_separator_and_newline[len(list_by_separator_and_newline)-1] == '':
+            return 'Number expected but EOF found'
 
         for string in list_by_separator_and_newline:
             if Add.isfloat(string):
                 numbersum += float(string)
 
         return str(numbersum)
-
-
-
 
 
