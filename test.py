@@ -18,6 +18,12 @@ class TestFizzBuzz(unittest.TestCase):
     def test_newline_as_separator(self):
         self.assertEqual(Add.add(r"1\n2,3,1"), '7.0')
 
+    def test_newline_as_separator(self):
+        self.assertEqual(Add.add(r"175.2,\n35"), r"Number expected but '\n' found")
+
+    def test_no_separator_as_end(self):
+        self.assertEqual(Add.add("1,,2,3,1"), 'Error : 2 consecutive separators found')
+
     def test_no_separator_as_end(self):
         self.assertEqual(Add.add("1,2,3,1,"), 'Number expected but EOF found')
 
@@ -25,6 +31,7 @@ class TestFizzBuzz(unittest.TestCase):
         self.assertEqual(Add.add(r"//?\n1?2?3?1"), '7.0')
 
     def test_no_negative_number(self):
+        Add.add(r"//-\n1--2-3-9--1")
         self.assertEqual(Add.add(r"//-\n1--2-3-9--1"), "Negative not allowed : -2, -1")
 
 
