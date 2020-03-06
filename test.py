@@ -11,6 +11,9 @@ class TestFizzBuzz(unittest.TestCase):
         self.assertEqual(Add.add("1"), 1)
         self.assertEqual(Add.add("1,2"), 3)
         self.assertEqual(Add.add("1,2,3"), 6)
+    
+    def test_more_than_3_arguments(self):
+        self.assertEqual(Add.add("1,2,3,1"), '7')
 
 
 if __name__ == '__main__':
