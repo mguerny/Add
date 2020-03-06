@@ -18,7 +18,9 @@ class TestFizzBuzz(unittest.TestCase):
     def test_newline_as_separator(self):
         self.assertEqual(Add.add(r"1\n2,3,1"), '7')
 
+    def test_no_separator_as_end(self):
+        self.assertEqual(Add.add("1,2,3,1,"), 'Number expected but EOF found')
+
 
 if __name__ == '__main__':
     unittest.main()
-
