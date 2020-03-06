@@ -24,6 +24,10 @@ class TestFizzBuzz(unittest.TestCase):
     def test_custom_separator(self):
         self.assertEqual(Add.add(r"//?\n1?2?3?1"), '7.0')
 
+    def test_no_negative_number(self):
+        self.assertEqual(Add.add(r"//-\n1--2-3-9--1"), "Negative not allowed : -2, -1")
+
 
 if __name__ == '__main__':
     unittest.main()
+
