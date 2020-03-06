@@ -10,13 +10,21 @@ class Add:
     @staticmethod
     def add(numbers):
 
-        # separator = numbers.split(r'\n')
+        separator = ','
+
+        if '//' in numbers:
+            if numbers[0] == '/' and numbers[1] == '/':
+                separator = numbers.split(r"\n")[0][2:]
+                if separator == ".":
+                    return "'.' not allowed as separator"
+                len_to_remove = 2 + len(separator) + 2
+                numbers = numbers[len_to_remove:]
 
         numbersum = 0
         if numbers == '':
             return '0'
 
-        list_by_separator = numbers.split(',')
+        list_by_separator = numbers.split(separator)
         list_by_separator_and_newline = []
         for item in list_by_separator:
             smalllist = item.split(r"\n")
@@ -32,6 +40,8 @@ class Add:
                 numbersum += float(string)
 
         return str(numbersum)
+
+
 
 
 
