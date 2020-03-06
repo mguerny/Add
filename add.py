@@ -1,7 +1,17 @@
 class Add:
 
+    def isfloat(value):
+        try:
+            float(value)
+            return True
+        except ValueError:
+            return False
+
     @staticmethod
     def add(numbers):
+
+        # separator = numbers.split(r'\n')
+
         numbersum = 0
         if numbers == '':
             return '0'
@@ -18,9 +28,10 @@ class Add:
                 return 'Number expected but EOF found'
 
         for string in list_by_separator_and_newline:
-            if string.isnumeric():
-                numbersum += int(string)
+            if Add.isfloat(string):
+                numbersum += float(string)
 
         return str(numbersum)
+
 
 
