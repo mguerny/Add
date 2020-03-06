@@ -44,6 +44,8 @@ class Add:
         list_by_separator = numbers.split(separator)
         list_by_separator_and_newline = []
         for item in list_by_separator:
+            if item == '' and list_by_separator.index(item) != len(list_by_separator) - 1:
+                return "Error : 2 consecutive separators found"
             smalllist = item.split(r"\n")
             for item2 in smalllist:
                 list_by_separator_and_newline.append(item2)
@@ -51,10 +53,12 @@ class Add:
         if list_by_separator_and_newline[len(list_by_separator_and_newline)-1] == '':
             return 'Number expected but EOF found'
 
+        for item in list_by_separator_and_newline:
+            if item == '':
+                return r"Number expected but '\n' found"
+
         for string in list_by_separator_and_newline:
             if Add.isfloat(string):
                 numbersum += float(string)
 
         return str(numbersum)
-
-
