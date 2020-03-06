@@ -11,4 +11,4 @@ class Add:
             if string.isnumeric():
                 numbersum += int(string)
 
-        return numbersum
+        return str(numbersum)
